@@ -25,8 +25,8 @@ def main():
                 print("{} written".format(img_name))
                 img_counter += 1
     
-    cam.release()
     cv2.detroyAllWindows()
+    cam.release()
 
 if __name__ == "__main__":
     main()
