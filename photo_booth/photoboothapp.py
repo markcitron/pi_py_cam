@@ -27,10 +27,8 @@ class PhotoBoothApp:
 
         # create a button, that when pressed, will take the current
         # frame and save it to file
-        btn = tki.Button(self.root, text="Snapshot!",
-                command=self.takeSnapshot)
-        btn.pack(side="bottom", fill="both", expand="yes", padx=10,
-                pady=10)
+        btn = tki.Button(self.root, text="Snapshot!", command=self.takeSnapshot)
+        btn.pack(side="bottom", fill="both", expand="yes", padx=10, pady=10)
 
         # start a thread that constantly pools the video sensor for
         # the most recently readh frame
@@ -54,7 +52,7 @@ class PhotoBoothApp:
                 # openCV represents images in BGR order; however PIL
                 # represents images in RGB order, so we need to swap
                 # the channels, the convert to PIL and ImageTk format
-                image = cv2.cvtColor(self.frame, cv2.COLOR_BGRE2RGB)
+                image = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
                 image = Image.fromarray(image)
                 image = ImageRg.PhotoImage(image)
 
@@ -78,7 +76,7 @@ class PhotoBoothApp:
         # output path
         ts = datetime.datetime.now()
         filename = "{}.jpg".format(ts.strftime("%Y-%m-%d_%H-%M-%S"))
-        p = os.path.sep.join((self.outputPath, frilename))
+        p = os.path.sep.join((self.outputPath, filename))
 
         # save the file
         cv2.imwrite(p, self.frame.copy())

@@ -12,7 +12,8 @@ def main():
         ret, frame = cam.read()
         if not ret:
             print("Failed to grab frame")
-            breakcv2.imshow("Simple Camera", frame)
+            break
+        cv2.imshow("Simple Camera", frame)
 
             k = cv2.waitKey(1)
             if k%256 == 27:
